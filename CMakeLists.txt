@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.20)
+project(reel-forge-server VERSION 0.1.0 LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+find_package(Protobuf REQUIRED) find_package(gRPC REQUIRED) find_package(Threads REQUIRED)
+set(PROTO_SRC ${CMAKE_CURRENT_SOURCE_DIR}/proto/reel_forge.proto)
+set(PROTO_GEN_DIR ${CMAKE_CURRENT_BINARY_DIR}/generated)
+file(MAKE_DIRECTORY ${PROTO_GEN_DIR})
+add_custom_command(OUTPUT ${PROTO_GEN_DIR}/reel_forge.pb.cc ${PROTO_GEN_DIR}/reel_forge.grpc.pb.cc
+    COMMAND protoc --proto_path ${CMAKE_CURRENT_SOURCE_DIR}/proto --cpp_out ${PROTO_GEN_DIR} --grpc_out ${PROTO_GEN_DIR}
+    --plugin=protoc-gen-grpc=$<TARGET_FILE:gRPC::grpc_cpp_plugin> ${PROTO_SRC} DEPENDS ${PROTO_SRC})
+add_library(reel_forge_proto OBJECT ${PROTO_GEN_DIR}/reel_forge.pb.cc ${PROTO_GEN_DIR}/reel_forge.grpc.pb.cc)
+target_include_directories(reel_forge_proto PUBLIC ${PROTO_GEN_DIR})
+target_link_libraries(reel_forge_proto PUBLIC protobuf::libprotobuf gRPC::grpc++)
+add_executable(reel-forge-server src/main.cpp)
+target_include_directories(reel-forge-server PRIVATE src ${PROTO_GEN_DIR})
+target_link_libraries(reel-forge-server PRIVATE reel_forge_proto protobuf::libprotobuf gRPC::grpc++ Threads::Threads)
