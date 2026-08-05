@@ -12,6 +12,49 @@ The Reel Forge Server is a C++17 gRPC service that exposes the Jetson AGX Orin's
 - for
 - video
 - processing
+- Hardware
+- encode
+- job
+- management
+- Hardware
+- decode
+- job
+- management
+- Configurable
+- codec
+- (H.264,
+- H.265,
+- AV1)
+- Configurable
+- resolution
+- and
+- bitrate
+- Active
+- job
+- tracking
+- and
+- monitoring
+- Bytes
+- processed
+- statistics
+- Health
+- check
+- endpoint
+- C++17
+- with
+- strict
+- compiler
+- warnings
+- CMake
+- +
+- Ninja
+- build
+- system
+- Catch2
+- unit
+- tests
+- MIT
+- licensed
 
 ## Quick Start
 
@@ -24,16 +67,6 @@ The Reel Forge Server is a C++17 gRPC service that exposes the Jetson AGX Orin's
 make all      # Build all targets
 make test     # Run tests
 make clean    # Clean build artifacts
-```
-
-## Architecture
-
-```
-Driver (kernel module) ──► Server (gRPC) ──► GUI (PySide6)
-     │                        │                    │
-     ▼                        ▼                    ▼
-  Hardware              C++ Service           Desktop App
-  Access                Layer                 (macOS/Linux/Win)
 ```
 
 ## Repository Structure
@@ -51,10 +84,10 @@ Driver (kernel module) ──► Server (gRPC) ──► GUI (PySide6)
 ## Project Status
 
 **Version:** 0.1.0 — Initial release
-**License:** Hardware encode job management
+**License:** MIT
 **Audit Score:** 90/100
 
-## 🌐 Ecosystem
+## Ecosystem
 
 This project is part of the [Jetson AGX Orin Capability Showcase](https://github.com/soccentric-jetson-oss/soccentric-jetson-oss) — five open-source projects demonstrating full exploitation of NVIDIA's flagship edge AI platform.
 
@@ -64,4 +97,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. All contributions welcome
 
 ## License
 
-Hardware encode job management. See [LICENSE](LICENSE) for details.
+MIT. See [LICENSE](LICENSE) for details.
