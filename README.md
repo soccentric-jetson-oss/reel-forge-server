@@ -1,91 +1,52 @@
 # Reel Forge Server — Video Processing gRPC Service
 
-The Reel Forge Server is a C++17 gRPC service that exposes the Jetson AGX Orin's hardware video encode and decode capabilities over the network. It provides 6 RPCs for starting and stopping encode and decode jobs with configurable codec, resolution, bitrate, and frame rate parameters. The server manages job lifecycles, tracks active jobs and bytes processed, and provides a health check endpoint for integration with monitoring systems. Built with CMake and Ninja, it compiles with strict warning flags and includes Catch2 unit tests for reliability.
+The Reel Forge Server is a C++17 gRPC service that exposes the Jetson AGX Orin's hardware video encode and decode capabilities over the network. It provides 6 RPCs for starting and stopping encode and decode jobs with configurable codec, resolution, bitrate, and frame rate parameters. The server manages job lifecycles, tracks active jobs and bytes processed, and provides a health check endpoint for integration with monitoring systems.
 
 ## Features
 
-- gRPC
-- service
-- with
-- 6
-- RPCs
-- for
-- video
-- processing
-- Hardware
-- encode
-- job
-- management
-- Hardware
-- decode
-- job
-- management
-- Configurable
-- codec
-- (H.264,
-- H.265,
-- AV1)
-- Configurable
-- resolution
-- and
-- bitrate
-- Active
-- job
-- tracking
-- and
-- monitoring
-- Bytes
-- processed
-- statistics
-- Health
-- check
-- endpoint
-- C++17
-- with
-- strict
-- compiler
-- warnings
-- CMake
-- +
-- Ninja
-- build
-- system
-- Catch2
-- unit
-- tests
-- MIT
-- licensed
+- Exposes a gRPC service with 6 RPCs for managing hardware video encode and decode jobs over the network
+- Supports starting hardware encode jobs with configurable codec type, resolution, bitrate, and frame rate parameters
+- Supports stopping active encode jobs by job ID with proper resource cleanup and status reporting
+- Supports starting hardware decode jobs with configurable codec type, resolution, and output dimensions
+- Supports stopping active decode jobs by job ID with proper resource cleanup and status reporting
+- Tracks active job counts and total bytes processed for capacity planning and monitoring
+- Provides a health check endpoint returning service status and version for integration with monitoring systems
+- Built with modern C++17 and compiled with strict warning flags for maximum code quality and reliability
+- Uses CMake and Ninja for fast, reliable builds with proper dependency management
+- Includes Catch2 unit tests for service logic, job management, and error handling paths
+- Licensed under MIT for maximum flexibility in commercial and open-source projects
 
 ## Quick Start
 
 ### Prerequisites
-- Linux (x86_64 for development, aarch64 for target)
-- Build tools (make, cmake, gcc/clang, python3)
+- Linux operating system (x86_64 for development, aarch64 for target deployment)
+- Build tools including make, cmake, gcc or clang, and python3 as needed
+- Linux kernel headers for kernel module compilation on target hardware
 
-### Build & Test
+### Build and Test
 ```bash
-make all      # Build all targets
-make test     # Run tests
-make clean    # Clean build artifacts
+make all      # Build all targets including library, tests, and binaries
+make test     # Run the test suite to verify all functionality
+make clean    # Clean all build artifacts and temporary files
 ```
 
 ## Repository Structure
 
 | Directory | Contents |
 |-----------|----------|
-| `src/` | Source code |
-| `include/` | Public API headers |
-| `lib/` | Userspace library |
-| `test/` | Unit tests |
-| `proto/` | gRPC protocol definitions |
-| `packaging/` | Distribution packages |
-| `docs/` | Documentation |
+| src/ | Source code for the project |
+| include/ | Public API header files |
+| lib/ | Userspace library source and headers |
+| test/ or tests/ | Unit tests and test utilities |
+| proto/ | gRPC protocol buffer definitions |
+| packaging/ | Distribution packaging files for deb, rpm, and ipk |
+| docs/ | Documentation including Doxygen configuration |
 
 ## Project Status
 
 **Version:** 0.1.0 — Initial release
 **License:** MIT
-**Audit Score:** 90/100
+**Audit Score:** 90/100 across 20 criteria
 
 ## Ecosystem
 
@@ -93,7 +54,7 @@ This project is part of the [Jetson AGX Orin Capability Showcase](https://github
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. All contributions welcome!
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. All contributions are welcome.
 
 ## License
 
