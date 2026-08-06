@@ -1,9 +1,0 @@
-/home/sandesh/jetson/build/reel-forge-server/build/CMakeFiles/reel_forge_proto.dir
-/home/sandesh/jetson/build/reel-forge-server/build/CMakeFiles/reel-forge-core.dir
-/home/sandesh/jetson/build/reel-forge-server/build/CMakeFiles/reel-forge-server.dir
-/home/sandesh/jetson/build/reel-forge-server/build/CMakeFiles/format.dir
-/home/sandesh/jetson/build/reel-forge-server/build/CMakeFiles/format-check.dir
-/home/sandesh/jetson/build/reel-forge-server/build/CMakeFiles/lint.dir
-/home/sandesh/jetson/build/reel-forge-server/build/CMakeFiles/doc.dir
-/home/sandesh/jetson/build/reel-forge-server/build/CMakeFiles/edit_cache.dir
-/home/sandesh/jetson/build/reel-forge-server/build/CMakeFiles/rebuild_cache.dir
